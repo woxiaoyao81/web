@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>旋转菜单</title>
+    <script src="ruffle.js"></script>
+    <style>
+      .menu {
+        width: 500px;
+        height: 300px;
+        padding: 1em 0;
+        margin:0 auto;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        background-color: #007d20;
+      }
+      .menu-item {
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+      
+        position: relative;
+        cursor: pointer;
+      }
+
+      /* 动画! */
+      .menu-item:hover .menu-item-box,
+      .menu-item:focus .menu-item-box {
+        transform: translateZ(-25px) rotateX(90deg);
+      }
+
+      .menu-item-box {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        transition: all 0.3s ease-out;
+        transform: translatez(-25px);
+        transform-style: preserve-3d;
+      }
+
+      .front,
+      .back {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        box-sizing: border-box;
+      }
+      .front {
+        transform: rotatex(0deg) translatez(25px);
+        color: #0e4d92;
+        background: white;
+      }
+      .back {
+        transform: rotatex(-90deg) translatez(25px);
+        color: white;
+        background: #0e4d92;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu">
+        <div class="menu-item">
+          首页
+          <span class="menu-item-box">
+            <span class="front">首页</span>
+            <span class="back">首页</span>
+          </span>
+        </div>
+        <div class="menu-item">
+          新闻
+          <span class="menu-item-box">
+            <span class="front">新闻</span>
+            <span class="back">新闻</span>
+          </span>
+        </div>
+        <div class="menu-item">
+          关于
+          <span class="menu-item-box">
+            <span class="front">关于</span>
+            <span class="back">关于</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
